@@ -1,0 +1,22 @@
+app:
+  name: consumer-service
+
+replicaCount: 1
+
+image:
+  repository: docker.io/hellowoodes/spring-cloud-k8s-consumer
+  tag: "1.2"
+  pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: NodePort
+  port: 8081
+
+ingress:
+  enabled: true
+  hosts:
+    - host: consumer.hellowoodes.com
+      paths: [/]

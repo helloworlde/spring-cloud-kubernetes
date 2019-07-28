@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: provider-service
+  labels:
+    app.kubernetes.io/name: provider-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8082
+      targetPort: 8082
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: provider-service
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: provider-service
+  labels:
+    app.kubernetes.io/name: provider-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: provider-service
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: provider-service
+        app.kubernetes.io/instance: sad-markhor
+    spec:
+      containers:
+        - name: provider-service
+          image: "docker.io/hellowoodes/spring-cloud-k8s-provider:1.2"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8082
+              protocol: TCP

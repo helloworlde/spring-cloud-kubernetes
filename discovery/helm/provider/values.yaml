@@ -1,0 +1,10 @@
+replicaCount: 1
+
+image:
+  repository: docker.io/hellowoodes/spring-cloud-k8s-provider
+  tag: "1.2"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8082

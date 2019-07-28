@@ -1,0 +1,10 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+rootProject.name = 'spring-cloud-k8s'
+
+include('discovery/common')
+include('discovery/provider')
+include('discovery/consumer')
