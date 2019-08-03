@@ -1,0 +1,15 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: config-map-service
+data:
+  application.yaml: |-
+    spring:
+      profiles: dev
+    config:
+        applicationVersion: dev-0.0.1
+    ---
+    spring:
+      profiles: prod
+    config:
+        applicationVersion: prod-0.0.2
