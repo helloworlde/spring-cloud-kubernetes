@@ -126,6 +126,7 @@ spec:
             - name: http
               containerPort: 8082
               protocol: TCP
+      serviceAccountName: springcloud
 ```
 
 ## Consumer 
@@ -299,6 +300,7 @@ spec:
             - name: http
               containerPort: 8081
               protocol: TCP
+      serviceAccountName: springcloud
 ```
 
 ## 部署测试
@@ -307,6 +309,7 @@ spec:
 
 
 ```bash
+kubectl apply -f discovery/service-account.yaml
 kubectl apply -f discovery/provider/provider-service.yaml
 kubectl apply -f discovery/consumer/consumer-service.yaml
 ```

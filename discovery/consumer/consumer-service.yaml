@@ -40,3 +40,4 @@ spec:
             - name: http
               containerPort: 8081
               protocol: TCP
+      serviceAccountName: springcloud
